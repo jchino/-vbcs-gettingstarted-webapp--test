@@ -1,0 +1,19 @@
+name: mdBook
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install mdBook
+      run: cargo install mdbook --version $MDBOOK_VERSION
+      env:
+        MDBOOK_VERSION: 0.3.5  
+    - name: Run mdBook build
+      run: cd $GITHUB_WORKSPACE && ls
